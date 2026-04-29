@@ -25,6 +25,8 @@ Also handle narration audio generation when the user provides a VOICEVOX-compati
 
 1. Confirm or extract required inputs:
    - MotionPNGTuber asset directory containing `mouth_track.json`, `mouth/*.png`, and a mouthless body video or frame sequence.
+   - If no MotionPNGTuber asset directory/model is provided, use the bundled default model at `../../assets/default-pngtuber/nike_loop_fix` relative to this `SKILL.md`. It contains `mouth_track.json`, `mouth/closed.png`, `mouth/half.png`, `mouth/open.png`, and `loop_mouthless_h264.mp4`.
+   - When the target Remotion project needs public/static assets, copy the bundled default model into the target project, for example `public/pngtuber/nike_loop_fix`, and reference that copy in the composition.
    - TTS engine type: `voicevox` or `aivisspeech`.
    - TTS base URL, such as `http://localhost:50021` or `http://localhost:10101`.
    - TTS model/speaker/style selection. Do not guess; inspect `/speakers` when the user provides only a model name or says there is one model.

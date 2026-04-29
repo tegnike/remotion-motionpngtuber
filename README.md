@@ -8,6 +8,8 @@ The bundled skill covers:
 - Rendering MotionPNGTuber mouth sprites as a Remotion frame-driven canvas
   overlay from `mouth_track.json`.
 - Preserving animated mouthless body video or synchronized extracted frames.
+- Falling back to the bundled default PNGTuber model in
+  `assets/default-pngtuber/nike_loop_fix` when no model is specified.
 - Generating VOICEVOX or AivisSpeech narration through a local
   VOICEVOX-compatible HTTP API.
 - Validating visual sync, transparent compositing, and final MP4 output.
@@ -65,5 +67,6 @@ Invoke the plugin skill explicitly in Claude Code:
 /remotion-motionpngtuber:remotion-motionpngtuber Add this MotionPNGTuber character to my Remotion composition using the provided asset directory and VOICEVOX engine.
 ```
 
-The request should include the MotionPNGTuber asset directory, TTS engine URL,
-speaker/model/style selection, and dialogue lines.
+The request should include the TTS engine URL, speaker/model/style selection,
+and dialogue lines. If no MotionPNGTuber asset directory is provided, the skill
+uses the bundled default model.

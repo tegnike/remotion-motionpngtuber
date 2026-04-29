@@ -9,7 +9,7 @@
       "name": "remotion-motionpngtuber",
       "source": "./",
       "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion videos.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "tegnike"
       },
