@@ -111,9 +111,9 @@ const voiceCues = [
   { start: 0.4, duration: 3.2, file: "audio/voice-001.wav" },
 ];
 
-const getActiveVoiceWindow = (timelineTime) => {
+const getActiveVoiceWindow = (timelineTimeSec) => {
   return voiceCues.find((cue) => {
-    return timelineTime >= cue.start && timelineTime < cue.start + cue.duration;
+    return timelineTimeSec >= cue.start && timelineTimeSec < cue.start + cue.duration;
   }) ?? null;
 };
 ```

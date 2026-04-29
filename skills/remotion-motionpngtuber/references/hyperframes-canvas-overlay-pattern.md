@@ -66,13 +66,15 @@ body frame using the same `trackFrameIndex` as the mouth.
   const mouthTrack = window.MOTIONPNGTUBER_MOUTH_TRACK;
   const compositionDuration = 8;
   const bodyFrames = Array.from({ length: mouthTrack.frames.length }, (_, index) => {
-    return `pngtuber/body-transparent/frame-${String(index).padStart(3, "0")}.png`;
+    return `pngtuber/body-transparent/frame-${String(index + 1).padStart(3, "0")}.png`;
   });
   const mouthSpriteSources = {
     closed: "pngtuber/mouth/closed.png",
     half: "pngtuber/mouth/half.png",
     open: "pngtuber/mouth/open.png",
   };
+  const bodyCanvas = document.querySelector("#body-canvas");
+  const mouthCanvas = document.querySelector("#mouth-canvas");
   const voiceCues = [
     { start: 0.4, duration: 3.2 },
   ];
@@ -119,11 +121,11 @@ body frame using the same `trackFrameIndex` as the mouth.
 
     const trackFrameIndex = getTrackFrameIndex(timelineTime);
     drawBodyFrame(
-      document.querySelector("#body-canvas"),
+      bodyCanvas,
       assets.bodyImages[trackFrameIndex],
     );
     drawMouthFrame(
-      document.querySelector("#mouth-canvas"),
+      mouthCanvas,
       assets.mouthSprites,
       getMouthState(timelineTime),
       trackFrameIndex,
