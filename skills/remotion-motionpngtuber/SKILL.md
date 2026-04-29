@@ -67,8 +67,9 @@ Also handle narration audio generation when the user provides a VOICEVOX-compati
    - Do not drive HyperFrames mouth state from `requestAnimationFrame`, `Date.now()`, WebAudio realtime analysis, or a manually played video element during render.
 
 6. Choose mouth state deterministically:
-   - Use generated voice cue windows by default.
-   - Optionally derive rough amplitude windows offline from generated WAV files.
+   - Prefer mouth event windows derived offline from generated WAV amplitude, with `start`, `end`, and `state`.
+   - Use generated voice cue windows as a fallback, but animate at speech cadence rather than at track FPS.
+   - Do not use `mouthTrack.fps` to decide how often the mouth opens; it only maps timeline time to tracked mouth/body coordinates.
    - Avoid WebAudio realtime analysis inside Remotion or HyperFrames renders.
    - Keep `closed`, `half`, `open` fallback order.
 

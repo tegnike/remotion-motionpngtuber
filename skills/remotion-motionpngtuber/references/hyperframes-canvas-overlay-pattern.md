@@ -65,18 +65,26 @@ body frame using the same `trackFrameIndex` as the mouth.
 
   const mouthTrack = window.MOTIONPNGTUBER_MOUTH_TRACK;
   const compositionDuration = 8;
+  const modelPath = "pngtuber/nike_loop_fix";
   const bodyFrames = Array.from({ length: mouthTrack.frames.length }, (_, index) => {
-    return `pngtuber/body-transparent/frame-${String(index + 1).padStart(3, "0")}.png`;
+    return `${modelPath}/body-transparent/frame-${String(index + 1).padStart(3, "0")}.png`;
   });
   const mouthSpriteSources = {
-    closed: "pngtuber/mouth/closed.png",
-    half: "pngtuber/mouth/half.png",
-    open: "pngtuber/mouth/open.png",
+    closed: `${modelPath}/mouth/closed.png`,
+    half: `${modelPath}/mouth/half.png`,
+    open: `${modelPath}/mouth/open.png`,
   };
   const bodyCanvas = document.querySelector("#body-canvas");
   const mouthCanvas = document.querySelector("#mouth-canvas");
   const voiceCues = [
     { start: 0.4, duration: 3.2 },
+  ];
+  // Prefer generating these offline from WAV RMS peaks. They override the
+  // syllable-rate fallback below and keep mouth movement tied to audio.
+  const mouthEvents = [
+    { start: 0.42, end: 0.56, state: "open" },
+    { start: 0.56, end: 0.68, state: "half" },
+    { start: 0.74, end: 0.88, state: "open" },
   ];
 
   const loadImage = (src) =>
@@ -106,13 +114,21 @@ body frame using the same `trackFrameIndex` as the mouth.
     mouthTrack.frames.length;
 
   const getMouthState = (timelineTime) => {
-    const speaking = voiceCues.some((cue) => {
-      return timelineTime >= cue.start && timelineTime < cue.start + cue.duration;
+    const explicitEvent = mouthEvents.find((event) => {
+      return timelineTime >= event.start && timelineTime < event.end;
     });
-    if (!speaking) return "closed";
+    if (explicitEvent) return explicitEvent.state;
 
-    const pulse = Math.floor(timelineTime * mouthTrack.fps * 2) % 3;
-    return pulse === 0 ? "open" : "half";
+    const cue = voiceCues.find((candidate) => {
+      return timelineTime >= candidate.start && timelineTime < candidate.start + candidate.duration;
+    });
+    if (!cue) return "closed";
+
+    const localTime = timelineTime - cue.start;
+    const mouthStepSeconds = 0.14;
+    const fallbackPattern = ["half", "open", "half", "closed"];
+    const fallbackIndex = Math.floor(localTime / mouthStepSeconds) % fallbackPattern.length;
+    return fallbackPattern[fallbackIndex];
   };
 
   const drawMotionPngTuberFrame = (timelineTime) => {
@@ -187,10 +203,10 @@ If the mouthless body video has a green or solid-color background, make a
 transparent frame sequence before wiring the composition:
 
 ```bash
-mkdir -p pngtuber/body-transparent
-ffmpeg -i pngtuber/loop_mouthless_h264.mp4 \
+mkdir -p pngtuber/nike_loop_fix/body-transparent
+ffmpeg -i pngtuber/nike_loop_fix/loop_mouthless_h264.mp4 \
   -vf "fps=30,colorkey=0x00aa00:0.24:0.04,format=rgba" \
-  pngtuber/body-transparent/frame-%03d.png
+  pngtuber/nike_loop_fix/body-transparent/frame-%03d.png
 ```
 
 Keep the exported frame dimensions unchanged. The body canvas and mouth canvas
@@ -213,5 +229,7 @@ Inspect the extracted frames and confirm:
 
 - The body changes across time.
 - The mouth is visible and uses the tracked quad.
+- Speaking mouth states change at speech cadence or from offline amplitude
+  windows, not every render frame.
 - The background is transparent or composited cleanly over the intended scene.
 - Audio, subtitles, and mouth windows share the same cue timing.
