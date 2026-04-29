@@ -70,6 +70,7 @@ Also handle narration audio generation when the user provides a VOICEVOX-compati
    - Prefer mouth event windows derived offline from generated WAV amplitude, with `start`, `end`, and `state`.
    - Use generated voice cue windows as a fallback, but animate at speech cadence rather than at track FPS.
    - Do not use `mouthTrack.fps` to decide how often the mouth opens; it only maps timeline time to tracked mouth/body coordinates.
+   - Keep fallback mouth changes near human syllable cadence, roughly every 0.12-0.18 seconds. Faster frame-rate toggles look like flicker and are not MotionPNGTuber behavior.
    - Avoid WebAudio realtime analysis inside Remotion or HyperFrames renders.
    - Keep `closed`, `half`, `open` fallback order.
 

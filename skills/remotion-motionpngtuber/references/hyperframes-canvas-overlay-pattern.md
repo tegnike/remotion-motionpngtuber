@@ -113,6 +113,8 @@ body frame using the same `trackFrameIndex` as the mouth.
     Math.floor((timelineTime % loopDurationSeconds) * mouthTrack.fps) %
     mouthTrack.frames.length;
 
+  // `mouthTrack.fps` is for tracked quad/body-frame sync only. Do not use it as
+  // the mouth open/close cadence, or the mouth will flicker at video-frame rate.
   const getMouthState = (timelineTime) => {
     const explicitEvent = mouthEvents.find((event) => {
       return timelineTime >= event.start && timelineTime < event.end;
@@ -125,7 +127,7 @@ body frame using the same `trackFrameIndex` as the mouth.
     if (!cue) return "closed";
 
     const localTime = timelineTime - cue.start;
-    const mouthStepSeconds = 0.14;
+    const mouthStepSeconds = 0.14; // Human syllable-like cadence, not track FPS.
     const fallbackPattern = ["half", "open", "half", "closed"];
     const fallbackIndex = Math.floor(localTime / mouthStepSeconds) % fallbackPattern.length;
     return fallbackPattern[fallbackIndex];
