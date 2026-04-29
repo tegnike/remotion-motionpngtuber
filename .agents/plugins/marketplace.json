@@ -1,0 +1,20 @@
+{
+  "name": "remotion-motionpngtuber",
+  "interface": {
+    "displayName": "Remotion MotionPNGTuber"
+  },
+  "plugins": [
+    {
+      "name": "remotion-motionpngtuber",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

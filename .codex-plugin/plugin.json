@@ -1,0 +1,31 @@
+{
+  "name": "remotion-motionpngtuber",
+  "version": "0.1.0",
+  "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion videos.",
+  "homepage": "https://github.com/tegnike/remotion-motionpngtuber",
+  "repository": "https://github.com/tegnike/remotion-motionpngtuber",
+  "license": "MIT",
+  "keywords": [
+    "remotion",
+    "motionpngtuber",
+    "pngtuber",
+    "voicevox",
+    "aivisspeech"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Remotion MotionPNGTuber",
+    "shortDescription": "Add MotionPNGTuber characters and Japanese TTS narration to Remotion videos.",
+    "longDescription": "A Codex plugin that teaches Remotion workflows for MotionPNGTuber assets: rendering mouthless character bodies, warping mouth sprites from mouth_track.json, preserving body animation, generating VOICEVOX/AivisSpeech narration, and validating synced final renders.",
+    "developerName": "tegnike",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Remotion MotionPNGTuber to add a MotionPNGTuber character and VOICEVOX/AivisSpeech narration to this Remotion composition.",
+      "Use Remotion MotionPNGTuber to fix mouth tracking, body animation sync, or transparent compositing in this Remotion video."
+    ]
+  }
+}
