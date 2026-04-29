@@ -1,4 +1,4 @@
-# Canvas Overlay Pattern
+# Remotion Canvas Overlay Pattern
 
 Use this pattern when adding MotionPNGTuber mouth rendering to a Remotion composition.
 

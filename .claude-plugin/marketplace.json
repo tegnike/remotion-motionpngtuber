@@ -1,6 +1,6 @@
 {
   "name": "remotion-motionpngtuber",
-  "description": "Claude Code marketplace for the Remotion MotionPNGTuber plugin.",
+  "description": "Claude Code marketplace for the MotionPNGTuber plugin for Remotion and HyperFrames.",
   "owner": {
     "name": "tegnike"
   },
@@ -8,7 +8,7 @@
     {
       "name": "remotion-motionpngtuber",
       "source": "./",
-      "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion videos.",
+      "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion or HyperFrames videos.",
       "version": "0.1.1",
       "author": {
         "name": "tegnike"
@@ -19,6 +19,7 @@
       "category": "video",
       "tags": [
         "remotion",
+        "hyperframes",
         "motionpngtuber",
         "voicevox",
         "aivisspeech"

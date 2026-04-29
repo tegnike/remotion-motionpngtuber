@@ -1,12 +1,13 @@
-# Remotion MotionPNGTuber
+# MotionPNGTuber for Remotion and HyperFrames
 
 Codex and Claude Code plugin for adding MotionPNGTuber / MotionPNGTuber_UI
-style talking characters and Japanese TTS narration to Remotion videos.
+style talking characters and Japanese TTS narration to Remotion or HyperFrames
+videos.
 
 The bundled skill covers:
 
-- Rendering MotionPNGTuber mouth sprites as a Remotion frame-driven canvas
-  overlay from `mouth_track.json`.
+- Rendering MotionPNGTuber mouth sprites as a frame-driven canvas overlay from
+  `mouth_track.json` in either Remotion or HyperFrames.
 - Preserving animated mouthless body video or synchronized extracted frames.
 - Falling back to the bundled default PNGTuber model in
   `assets/default-pngtuber/nike_loop_fix` when no model is specified.
@@ -23,7 +24,8 @@ codex plugin marketplace add https://github.com/tegnike/remotion-motionpngtuber.
 ```
 
 Then restart Codex, open the plugin directory, select the
-`Remotion MotionPNGTuber` marketplace, and install the plugin.
+`MotionPNGTuber for Remotion and HyperFrames` marketplace, and install the
+plugin.
 
 For local development from this folder:
 
@@ -56,6 +58,12 @@ claude --plugin-dir /absolute/path/to/remotion-motionpngtuber
 Invoke the skill explicitly in Codex:
 
 ```text
+$remotion-motionpngtuber Add this MotionPNGTuber character to my video using HyperFrames, the provided asset directory, and VOICEVOX engine.
+```
+
+or:
+
+```text
 $remotion-motionpngtuber Add this MotionPNGTuber character to my Remotion composition using the provided asset directory and VOICEVOX engine.
 ```
 
@@ -64,9 +72,11 @@ $remotion-motionpngtuber Add this MotionPNGTuber character to my Remotion compos
 Invoke the plugin skill explicitly in Claude Code:
 
 ```text
-/remotion-motionpngtuber:remotion-motionpngtuber Add this MotionPNGTuber character to my Remotion composition using the provided asset directory and VOICEVOX engine.
+/remotion-motionpngtuber:remotion-motionpngtuber Add this MotionPNGTuber character to my video using Remotion or HyperFrames, the provided asset directory, and VOICEVOX engine.
 ```
 
 The request should include the TTS engine URL, speaker/model/style selection,
-and dialogue lines. If no MotionPNGTuber asset directory is provided, the skill
-uses the bundled default model.
+dialogue lines, and preferred runtime when it matters. If no runtime is
+specified, choose the one that matches the target project already present in the
+workspace. If no MotionPNGTuber asset directory is provided, the skill uses the
+bundled default model.

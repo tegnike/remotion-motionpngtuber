@@ -1,4 +1,4 @@
 interface:
-  display_name: "Remotion MotionPNGTuber"
-  short_description: "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion videos."
-  default_prompt: "Add a MotionPNGTuber character and generated VOICEVOX/AivisSpeech narration to this Remotion composition using mouth_track.json, mouthless video or frames, mouth sprites, and the provided TTS engine/model."
+  display_name: "MotionPNGTuber for Remotion and HyperFrames"
+  short_description: "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion or HyperFrames videos."
+  default_prompt: "Add a MotionPNGTuber character and generated VOICEVOX/AivisSpeech narration to this Remotion or HyperFrames composition using mouth_track.json, mouthless video or frames, mouth sprites, and the provided TTS engine/model."
