@@ -1,6 +1,6 @@
 # VOICEVOX / AivisSpeech TTS Generation
 
-Use this reference when the user wants dialogue audio generated as part of a Remotion MotionPNGTuber video.
+Use this reference when the user wants dialogue audio generated as part of a Remotion or HyperFrames MotionPNGTuber video.
 
 ## Inputs To Require
 
@@ -61,7 +61,9 @@ For many lines, write a small script or loop that:
 - Numbers files consistently: `voice-001.wav`, `voice-002.wav`, ...
 - Writes a manifest with text, file path, duration seconds, and duration frames.
 
-## Remotion Integration
+## Timeline Integration
+
+### Remotion
 
 Use generated durations to place audio and dialogue:
 
@@ -85,6 +87,34 @@ const getActiveVoiceWindow = (frame: number) => {
     if (frame >= cue.start && frame < cue.start + cue.duration) return cue;
   }
   return null;
+};
+```
+
+### HyperFrames
+
+Use the same generated cue manifest to create timed `<audio>` clips and mouth
+windows in the HTML composition:
+
+```html
+<audio
+  id="voice-001"
+  data-start="0.4"
+  data-duration="3.2"
+  data-track-index="4"
+  src="audio/voice-001.wav"
+  data-volume="1"
+></audio>
+```
+
+```js
+const voiceCues = [
+  { start: 0.4, duration: 3.2, file: "audio/voice-001.wav" },
+];
+
+const getActiveVoiceWindow = (timelineTimeSec) => {
+  return voiceCues.find((cue) => {
+    return timelineTimeSec >= cue.start && timelineTimeSec < cue.start + cue.duration;
+  }) ?? null;
 };
 ```
 

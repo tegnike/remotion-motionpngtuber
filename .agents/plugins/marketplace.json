@@ -1,7 +1,7 @@
 {
   "name": "remotion-motionpngtuber",
   "interface": {
-    "displayName": "Remotion MotionPNGTuber"
+    "displayName": "MotionPNGTuber for Remotion and HyperFrames"
   },
   "plugins": [
     {

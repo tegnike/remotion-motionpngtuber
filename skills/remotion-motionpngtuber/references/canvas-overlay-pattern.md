@@ -1,4 +1,4 @@
-# Canvas Overlay Pattern
+# Remotion Canvas Overlay Pattern
 
 Use this pattern when adding MotionPNGTuber mouth rendering to a Remotion composition.
 
@@ -38,6 +38,9 @@ type MouthTrack = {
 
 const mouthTrack = mouthTrackData as unknown as MouthTrack;
 const mouthStates: MouthState[] = ['closed', 'half', 'open'];
+
+// Use mouthTrack.fps only to synchronize tracked quads/body frames. Mouth state
+// should come from voice cue or offline amplitude timing, not from track FPS.
 
 export const MotionPngTuberCharacter = ({
   compositionFps,

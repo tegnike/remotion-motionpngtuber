@@ -1,12 +1,13 @@
 {
   "name": "remotion-motionpngtuber",
-  "version": "0.1.1",
-  "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion videos.",
+  "version": "0.2.0",
+  "description": "Add MotionPNGTuber characters and VOICEVOX/AivisSpeech narration to Remotion or HyperFrames videos.",
   "homepage": "https://github.com/tegnike/remotion-motionpngtuber",
   "repository": "https://github.com/tegnike/remotion-motionpngtuber",
   "license": "MIT",
   "keywords": [
     "remotion",
+    "hyperframes",
     "motionpngtuber",
     "pngtuber",
     "voicevox",
@@ -14,9 +15,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Remotion MotionPNGTuber",
-    "shortDescription": "Add MotionPNGTuber characters and Japanese TTS narration to Remotion videos.",
-    "longDescription": "A Codex plugin that teaches Remotion workflows for MotionPNGTuber assets: rendering mouthless character bodies, warping mouth sprites from mouth_track.json, preserving body animation, generating VOICEVOX/AivisSpeech narration, and validating synced final renders.",
+    "displayName": "MotionPNGTuber for Remotion and HyperFrames",
+    "shortDescription": "Add MotionPNGTuber characters and Japanese TTS narration to Remotion or HyperFrames videos.",
+    "longDescription": "A Codex plugin that teaches Remotion and HyperFrames workflows for MotionPNGTuber assets: rendering mouthless character bodies, warping mouth sprites from mouth_track.json, preserving body animation, generating VOICEVOX/AivisSpeech narration, and validating synced final renders.",
     "developerName": "tegnike",
     "category": "Productivity",
     "capabilities": [
@@ -24,8 +25,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Use Remotion MotionPNGTuber to add a MotionPNGTuber character and VOICEVOX/AivisSpeech narration to this Remotion composition.",
-      "Use Remotion MotionPNGTuber to fix mouth tracking, body animation sync, or transparent compositing in this Remotion video."
+      "Use MotionPNGTuber for Remotion and HyperFrames to add a MotionPNGTuber character and VOICEVOX/AivisSpeech narration to this video.",
+      "Use MotionPNGTuber for Remotion and HyperFrames to fix mouth tracking, body animation sync, or transparent compositing in this Remotion or HyperFrames video."
     ]
   }
 }
